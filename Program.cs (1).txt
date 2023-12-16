@@ -1,0 +1,15 @@
+﻿using Assignment02_Data_Aggregation_Transmission.Model;
+
+// Assignment_2_Data_Aggregation_Transmission
+// Task-1  Input data from user.csv
+
+Console.WriteLine("\n ***** Task 1 ***** \n");
+string Data = File.ReadAllText(@"C:\Users\patel\Documents\Data Encoding\users.csv");
+Console.WriteLine(Data);
+
+Console.WriteLine("\n ***** Task 2 ***** \n");
+// Task 2 Aggregation
+dataAggregation1 data = new dataAggregation1();
+data.Maximumminum(Data);
+data.Startingname(Data);
+data.Numberofelement(Data);

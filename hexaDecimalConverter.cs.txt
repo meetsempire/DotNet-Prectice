@@ -1,0 +1,79 @@
+﻿// Assignment :– 1 Data Security Encoding Encryption
+// Task 3 :- convert user input to hexadecimal format and back to string
+
+namespace A1_Data_Security_Encoding_Encryption.Models
+
+{
+
+    internal class hexaDecimalConverter
+    {
+
+        public string StringtoHexadecimal(string Full_name)
+        {
+            // convert string to hexadecimal format
+            string hexadecimalData = "";
+
+
+            string hexastring = "";
+
+            foreach (char c in Full_name)
+            {
+                int x = (int)c;
+                string result = "";
+
+
+                while (x != 0)
+                {
+                    if ((x % 16) < 10)
+                        result = x % 16 + result;
+                    else
+                    {
+                        string temp = "";
+                        switch (x % 16)
+                        {
+
+                            case 10: temp = "A"; break;
+                            case 11: temp = "B"; break;
+                            case 12: temp = "C"; break;
+                            case 13: temp = "D"; break;
+                            case 14: temp = "E"; break;
+                            case 15: temp = "F"; break;
+
+                        }
+
+                        result = temp + result;
+
+
+                    }
+                    x /= 16;
+
+                }
+                hexadecimalData += result;
+                Console.WriteLine("ASCII for = {0}  = {1} Hexa ={2}", c, (int)c, result);
+            }
+
+            Console.WriteLine($"{Full_name} = Hexadecimal ={hexadecimalData}");
+            return hexadecimalData;
+
+
+        }
+        // convert hexadecimal format to string
+        public void HexadecimalTostring(string hexadecimalData)
+
+        {
+            string result = "";
+            for (int i = 0; i < hexadecimalData.Length; i += 2)
+            {
+                string first8_bits = hexadecimalData.Substring(i, 2);
+                int number = Convert.ToInt32(first8_bits, 16);
+                result += (char)number;
+
+            }
+            Console.WriteLine("Hexadecimal to string = " + result.ToString());
+
+        }
+    }
+}
+
+
+// Done by Meet Mistry 200573389

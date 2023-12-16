@@ -1,0 +1,48 @@
+﻿// Assignment :– 1 Data Security Encoding Encryption
+// Task 1 :- Enter Your Full Name Here
+
+
+
+using A1_Data_Security_Encoding_Encryption.Models;
+
+Console.WriteLine("\n ####### User Input ####### \n");
+
+
+Console.WriteLine("Please Enter Your Full Name Here : ");
+string Full_name = Console.ReadLine();
+
+
+//Task 2 convert string to binary and then binary to string
+
+Console.WriteLine("\n #######  convert : string to binary and then binary to string  ####### \n");
+
+binaryConverter base2 = new binaryConverter(); 
+
+// encoding :converting string to binary version of string 
+string binarydata = base2.StringToBinary(Full_name);
+base2.BinaryTostring(binarydata);
+
+// Task 3 convert user input to hexadecimal format and back to string
+
+Console.WriteLine("\n ####### convert user input to hexadecimal format and back to string ####### \n");
+hexaDecimalConverter base16 = new hexaDecimalConverter();
+string hexadecimalData = base16.StringtoHexadecimal(Full_name);
+base16.HexadecimalTostring(hexadecimalData);
+
+
+// Task 4 convert string to base64 model and base64 model to string
+
+Console.WriteLine("\n ####### convert to string to base64 and base64 to string ####### \n");
+
+base64Converter base64 = new base64Converter();
+base64.StringToBase64(Full_name);
+
+// Task 5 cryptography of FullName 
+
+Console.WriteLine("\n ####### TASK 5 - Encryption Decryption : Shift cypher ####### \n");
+
+encryptionDecryption shiftCipher = new encryptionDecryption();
+string encryptdata = shiftCipher.EncryptMessage(Full_name, 1);
+shiftCipher.DecryptMessage(encryptdata, 1);
+
+// Done by Meet Mistry 200573389

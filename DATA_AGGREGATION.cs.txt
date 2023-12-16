@@ -1,0 +1,107 @@
+﻿using System.Text.RegularExpressions;
+
+namespace Assignment02_Data_Aggregation_Transmission.Model
+{
+    internal class dataAggregation1
+    {
+        public void Maximumminum(string Data)
+        {
+            
+            string[] tokens = Data.Split("\r\n");
+            int[] numbers = Regex.Matches(Data, "(-?[0-9]+)").OfType<Match>().Select(m => int.Parse(m.Value)).ToArray();
+            int count = numbers.Count();
+
+          // for finding average, maximum and minimum of student Id
+
+            int j, max, min, avg;
+            
+            Console.WriteLine("\n Maximum,Minimum and Average of Student Id numbers");
+            max = numbers[0];
+            min = numbers[0];
+            avg = numbers[0];
+            for (j = 1; j < count; j++)
+
+            {
+                if (numbers[j] > max)
+                    max = numbers[j];
+                if (numbers[j] < min)
+                    min = numbers[j];
+
+                numbers[j] += numbers[j];
+                avg = numbers[j];
+
+            }
+            Console.WriteLine("Avg. of Studetn Id : {0}\n", avg);
+
+            Console.WriteLine("Max. of Student Id : {0}\n", max);
+
+            Console.WriteLine("Min. of Student Id : {0}\n", min);
+            
+        }
+
+        // for first letter
+
+        public void Startingname(string Data)
+        {
+
+            string[] tokens = Data.Split("\r\n");
+            int[] numbers = Regex.Matches(Data, "(-?[0-9]+)").OfType<Match>().Select(m => int.Parse(m.Value)).ToArray();
+            int count = numbers.Count();
+
+            // for search name starting with enterd letter
+
+            Console.WriteLine("\n Find name start with Letter :-");
+            string startletter = Console.ReadLine().ToUpper();
+            Match NameMatch;
+            int counter = 0;
+            for (int j = 0; j < tokens.Length; j++)
+            {
+
+                string namesearch = tokens[j];
+                NameMatch = Regex.Match(namesearch, @"\b[A-Za-z]+\b");
+                string search = NameMatch.Value;
+                string FullName = Regex.Replace(search, "@^", "");
+                if (FullName.StartsWith(startletter))
+                {
+                    counter++;
+                    Console.Write("\n{0}", FullName);
+                }
+
+            }
+            Console.WriteLine("\n Total number of count start with entered letter : {0}={1}", startletter, counter);
+
+        }
+
+        // for contain letters
+
+        public void Numberofelement(string Data)
+        {
+            string[] tokens = Data.Split("\r\n");
+            int[] numbers = Regex.Matches(Data, "(-?[0-9]+)").OfType<Match>().Select(m => int.Parse(m.Value)).ToArray();
+            int count = numbers.Count();
+
+            Console.WriteLine("\n Find name : contain Letter :-");
+            string containletter = Console.ReadLine();
+            Match namematch2;
+            int counter2 = 0;
+            for (int j = 0; j < tokens.Length; j++)
+            {
+                string namesearch = tokens[j];
+                namematch2 = Regex.Match(namesearch, @"\b[A-Za-z]+\b");
+                string search = namematch2.Value;
+                string FullName = Regex.Replace(search, "@^", "");
+                if (FullName.Contains(containletter))
+                {
+                    counter2++;
+                    Console.Write("\n{0}", FullName);
+
+                }
+
+            }
+
+            Console.WriteLine("\n Total number of count start with letter : {0}={1}", containletter, counter2);
+
+        }
+
+    }
+}

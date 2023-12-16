@@ -1,0 +1,71 @@
+﻿// Assignment :– 1 Data Security Encoding Encryption
+// Task 5 :- encrypt the user input then decrpypt the output
+using System.Text;
+
+namespace A1_Data_Security_Encoding_Encryption.Models
+
+{
+    internal class encryptionDecryption
+    {
+        // encrypt user input
+        public string EncryptMessage(string message, int key)
+        {
+            string encryptedmessage = "";
+
+            foreach (char c in message)
+            {
+                if (char.IsLetter(c))
+                {
+
+                    int ascii = (int)c;
+                    ascii += key;
+                    char encrytedchar = (char)ascii;
+                    encryptedmessage += encrytedchar;
+
+
+                }
+                else
+                {
+
+                    encryptedmessage += c;
+
+                }
+
+            }
+
+            Console.WriteLine($" encryptedmessage = {encryptedmessage}");
+            return encryptedmessage;
+
+        }
+        // decrypt encrypted input
+        public void DecryptMessage(string encryptedmessage, int key)
+        {
+
+            string decryptedMessage = "";
+            foreach (char c in encryptedmessage)
+            {
+                if (char.IsLetter(c))
+                {
+                    int ascii = (int)c;
+                    ascii -= key;
+                    char decryptedchar = (char)ascii;
+
+                    decryptedMessage += decryptedchar;
+
+                }
+                else
+                {
+                    decryptedMessage += c;
+
+                }
+
+
+            }
+            Console.WriteLine($"decryptedMessage = {decryptedMessage}");
+
+        }
+
+    }
+}
+
+// Done by Meet Mistry 200573389
